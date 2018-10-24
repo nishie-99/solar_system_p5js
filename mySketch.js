@@ -15,7 +15,9 @@ var planets;
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 	background(0);
-
+	mercury = {colour:'White', radius:10, phase:5, distance:50, orbitSpeed:0.02}
+	venus = {colour:'Orange', radius:15, phase:5, distance:70, orbitSpeed:0.03}
+	planets = [mercury, venus];
 }
 
 function star() {
@@ -23,31 +25,29 @@ function star() {
 	ellipse(random(0, windowWidth), random(0, windowHeight), 2, 2)
 }
 
-function drawPlanet(colour, radius, phase, distance, orbitSpeed) {
-	fill(colour)
-	ellipse(distance * 1.5 * cos(phase), distance*sin(phase), radius, radius)
-	//phase += orbitSpeed * speed
+function updatePlanet(p){
+	p.phase += p.orbitSpeed * speed;
+}
+function drawPlanet(p) {
+	//console.log(p)
+	fill(p.colour);
+	ellipse(p.distance * 1.5 * cos(p.phase), p.distance*sin(p.phase), p.radius, p.radius);
+
 }
 
 function draw() {
-	speed = (mouseX + mouseY)/500
+	speed = (mouseX + mouseY)/500;
 	background(0);
 	translate (windowWidth/2, windowHeight/2);
 	noStroke();
 
-
 	//sun
-	// fill('Yellow');
-	// ellipse(0, 0, 40, 40);
+	fill('Yellow');
+	ellipse(0, 0, 40, 40);
 
-	planets = [];
-	//mercury
-	drawPlanet('Gray', 10, p1, 50, 0.02)
-	p1 += 0.02;
+	planets.forEach(drawPlanet);
+	planets.forEach(updatePlanet);
 
-	//venus
-	drawPlanet('orange', 15, p2, 70, 0.03);
-	p2+= 0.03 * speed;
 /*
 	//earth
 	fill('DeepSkyBlue')
