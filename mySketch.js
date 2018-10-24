@@ -15,12 +15,18 @@ var planets;
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 	background(0);
-	planets = [5, 5, 5, 5, 5, 5.03, 5, 5, 5];
+
 }
 
 function star() {
 	fill('White');
 	ellipse(random(0, windowWidth), random(0, windowHeight), 2, 2)
+}
+
+function drawPlanet(colour, radius, phase, distance, orbitSpeed) {
+	fill(colour)
+	ellipse(distance * 1.5 * cos(phase), distance*sin(phase), radius, radius)
+	//phase += orbitSpeed * speed
 }
 
 function draw() {
@@ -31,17 +37,16 @@ function draw() {
 
 
 	//sun
-	fill('Yellow');
-	ellipse(0, 0, 40, 40);
+	// fill('Yellow');
+	// ellipse(0, 0, 40, 40);
 
+	planets = [];
 	//mercury
-	fill('Gray')
-	ellipse(75*cos(p1), 50*sin(p1), 10, 10);
-	p1+= 0.02 * speed;
+	drawPlanet('Gray', 10, p1, 50, 0.02)
+	p1 += 0.02;
 
 	//venus
-	fill('Orange')
-	ellipse(105*cos(p2), 70*sin(p2), 15, 15);
+	drawPlanet('orange', 15, p2, 70, 0.03);
 	p2+= 0.03 * speed;
 /*
 	//earth
