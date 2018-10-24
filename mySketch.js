@@ -1,5 +1,3 @@
-var p1 = 2;
-var p2 = 3;
 var p3 = 4;
 var p4 = 5;
 var p5 = 6;
@@ -17,7 +15,8 @@ function setup() {
 	background(0);
 	mercury = {colour:'White', radius:10, phase:5, distance:50, orbitSpeed:0.02}
 	venus = {colour:'Orange', radius:15, phase:5, distance:70, orbitSpeed:0.03}
-	planets = [mercury, venus];
+	earth = {colour:'Blue', radius:22, phase:8, distance:150, orbitSpeed:0.07}
+	planets = [mercury, venus, earth];
 }
 
 function star() {
@@ -29,7 +28,6 @@ function updatePlanet(p){
 	p.phase += p.orbitSpeed * speed;
 }
 function drawPlanet(p) {
-	//console.log(p)
 	fill(p.colour);
 	ellipse(p.distance * 1.5 * cos(p.phase), p.distance*sin(p.phase), p.radius, p.radius);
 
