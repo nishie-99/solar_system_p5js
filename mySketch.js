@@ -12,11 +12,12 @@ var planets;
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
-	background(0);
+	background(0)
 	mercury = {colour:'White', radius:10, phase:5, distance:50, orbitSpeed:0.02}
 	venus = {colour:'Orange', radius:15, phase:5, distance:70, orbitSpeed:0.03}
-	earth = {colour:'Blue', radius:22, phase:8, distance:150, orbitSpeed:0.07}
-	planets = [mercury, venus, earth];
+	earth = {colour:'Blue', radius:20, phase:8, distance:150, orbitSpeed:0.006}
+	saturn = {colour:'LightGoldenRodYellow', radius:30, phase:5, distance:180, orbitSpeed:0.014, customDraw: drawSaturn}
+	planets = [mercury, venus, earth, saturn];
 }
 
 function star() {
@@ -27,11 +28,24 @@ function star() {
 function updatePlanet(p){
 	p.phase += p.orbitSpeed * speed;
 }
-function drawPlanet(p) {
+function basicEllipse(p){
 	fill(p.colour);
 	ellipse(p.distance * 1.5 * cos(p.phase), p.distance*sin(p.phase), p.radius, p.radius);
-
 }
+function drawPlanet(p) {
+	if (p.customDraw){
+		p.customDraw(p);
+	} else {
+		basicEllipse(p);
+	}
+}
+
+function drawSaturn(p) {
+	basicEllipse(p);
+	fill('Peru')
+	ellipse(p.distance * 1.5 * cos(p.phase), p.distance*sin(p.phase), p.radius * 2, p.radius*0.4);
+}
+
 
 function draw() {
 	speed = (mouseX + mouseY)/500;
@@ -67,12 +81,7 @@ function draw() {
 	p6+= 0.018 * speed;
 
 	//saturn
-	fill('LightGoldenRodYellow')
-	ellipse(270*cos(p7), 180*sin(p7), 30, 30);
-	//saturn's rings
-	fill('Peru')
-	ellipse(270*cos(p7), 180*sin(p7), 50, 10);
-	p7+= 0.014 * speed;
+
 
 	//uranus
 	fill('PowderBlue')
