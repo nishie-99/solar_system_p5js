@@ -1,18 +1,12 @@
-var p3 = 4;
-var p4 = 5;
-var p5 = 6;
-var p6 = 5.03;
-var p7 = 5;
-var p8 = 5;
-var p9 = 5;
-
 var speed = 1;
-
 var planets;
+var stars;
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 	background(0)
+	stars = []
+	createStars()
 	mercury = {colour:'White', radius:10, phase:5, distance:50, orbitSpeed:0.02}
 	venus = {colour:'Orange', radius:15, phase:5, distance:70, orbitSpeed:0.03}
 	earth = {colour:'Blue', radius:20, phase:8, distance:150, orbitSpeed:0.006}
@@ -20,13 +14,21 @@ function setup() {
 	planets = [mercury, venus, earth, saturn];
 }
 
-function stars() {
-	for (var i = 0; i <= 200; i++){
-		fill('White');
-		ellipse(random(0, windowWidth), random(0, windowHeight), 2, 2)
+function drawStar(s) {
+	if (random() >= 0.93){
+		//do nothing
+	} else {
+		fill('white');
+		ellipse(s.x, s.y, s.r, s.r)
 	}
 }
 
+function createStars(){
+	for (var i = 0; i <= 200; i++){
+		var s = {x: random(0, windowWidth), y: random(0, windowHeight), r: random(1, 5)}
+		stars.push(s)
+	}
+}
 function updatePlanet(p){
 	p.phase += p.orbitSpeed * speed;
 }
@@ -52,7 +54,7 @@ function drawSaturn(p) {
 function draw() {
 	speed = (mouseX + mouseY)/500;
 	background(0);
-	stars()
+	stars.forEach(drawStar)
 	translate (windowWidth/2, windowHeight/2);
 	noStroke();
 
