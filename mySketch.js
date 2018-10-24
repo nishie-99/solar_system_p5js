@@ -20,9 +20,11 @@ function setup() {
 	planets = [mercury, venus, earth, saturn];
 }
 
-function star() {
-	fill('White');
-	ellipse(random(0, windowWidth), random(0, windowHeight), 2, 2)
+function stars() {
+	for (var i = 0; i <= 200; i++){
+		fill('White');
+		ellipse(random(0, windowWidth), random(0, windowHeight), 2, 2)
+	}
 }
 
 function updatePlanet(p){
@@ -50,6 +52,7 @@ function drawSaturn(p) {
 function draw() {
 	speed = (mouseX + mouseY)/500;
 	background(0);
+	stars()
 	translate (windowWidth/2, windowHeight/2);
 	noStroke();
 
