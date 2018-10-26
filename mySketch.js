@@ -7,11 +7,15 @@ function setup() {
 	background(0)
 	stars = []
 	createStars()
-	mercury = {colour:'White', radius:10, phase:5, distance:50, orbitSpeed:0.02}
-	venus = {colour:'Orange', radius:15, phase:5, distance:70, orbitSpeed:0.03}
-	earth = {colour:'Blue', radius:20, phase:8, distance:150, orbitSpeed:0.006}
-	saturn = {colour:'LightGoldenRodYellow', radius:30, phase:5, distance:180, orbitSpeed:0.014, customDraw: drawSaturn}
-	planets = [mercury, venus, earth, saturn];
+	mercury = {colour:'White', radius:10, phase:5, distance:30, orbitSpeed:0.02}
+	venus = {colour:'Orange', radius:15, phase:5, distance:60, orbitSpeed:0.03}
+	earth = {colour:'Blue', radius:17, phase:8, distance:85, orbitSpeed:0.006}
+	mars = {colour:'Brown', radius:12, phase:3, distance:100, orbitSpeed:0.0035}
+	jupiter = {colour:'Khaki', radius:30, phase:9, distance:155, orbitSpeed:0.0042, }
+	saturn = {colour:'LightGoldenRodYellow', radius:25, phase:5, distance:200, orbitSpeed:0.014, customDraw: drawSaturn}
+	uranus = {colour:'PowderBlue', radius:22, phase:8, distance:230, orbitSpeed:0.0055}
+	neptune = {colour:'DarkSlateBlue', radius:22, phase:2, distance:260, orbitSpeed:0.0069}
+	planets = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune];
 }
 
 function drawStar(s) {
@@ -29,19 +33,28 @@ function createStars(){
 		stars.push(s)
 	}
 }
+
 function updatePlanet(p){
 	p.phase += p.orbitSpeed * speed;
 }
+
 function basicEllipse(p){
 	fill(p.colour);
 	ellipse(p.distance * 1.5 * cos(p.phase), p.distance*sin(p.phase), p.radius, p.radius);
 }
+
 function drawPlanet(p) {
 	if (p.customDraw){
 		p.customDraw(p);
 	} else {
 		basicEllipse(p);
 	}
+}
+
+function drawJupiter(p){
+		basicEllipse(p);
+		fill('Red')
+		ellipse(p.distance * 1.5 * cos((p.phase + 1)), p.distance*sin((p.phase + 1)), p.radius/5, p.radius/5);
 }
 
 function drawSaturn(p) {
