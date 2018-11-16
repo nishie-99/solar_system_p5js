@@ -7,14 +7,14 @@ function setup() {
 	background(0)
 	stars = []
 	createStars()
-	mercury = {colour:'White', radius:10, phase:5, distance:30, orbitSpeed:0.02}
-	venus = {colour:'Orange', radius:15, phase:5, distance:60, orbitSpeed:0.03}
-	earth = {colour:'Blue', radius:17, phase:8, distance:85, orbitSpeed:0.006}
-	mars = {colour:'Brown', radius:12, phase:3, distance:100, orbitSpeed:0.0035}
-	jupiter = {colour:'Khaki', radius:30, phase:9, distance:155, orbitSpeed:0.0042, }
-	saturn = {colour:'LightGoldenRodYellow', radius:25, phase:5, distance:200, orbitSpeed:0.014, customDraw: drawSaturn}
-	uranus = {colour:'PowderBlue', radius:22, phase:8, distance:230, orbitSpeed:0.0055}
-	neptune = {colour:'DarkSlateBlue', radius:22, phase:2, distance:260, orbitSpeed:0.0069}
+	mercury = {colour:'White', radius:10, phase:5, distance:30, orbitSpeed:0.048}
+	venus = {colour:'Orange', radius:15, phase:5, distance:60, orbitSpeed:0.035}
+	earth = {colour:'Blue', radius:17, phase:8, distance:85, orbitSpeed:0.03}
+	mars = {colour:'Brown', radius:12, phase:3, distance:100, orbitSpeed:0.024}
+	jupiter = {colour:'Khaki', radius:30, phase:9, distance:155, orbitSpeed:0.013, }
+	saturn = {colour:'LightGoldenRodYellow', radius:25, phase:5, distance:200, orbitSpeed:0.01, customDraw: drawSaturn}
+	uranus = {colour:'PowderBlue', radius:22, phase:8, distance:230, orbitSpeed:0.007}
+	neptune = {colour:'DarkSlateBlue', radius:22, phase:2, distance:260, orbitSpeed:0.005}
 	planets = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune];
 }
 
