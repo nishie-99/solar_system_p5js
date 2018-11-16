@@ -77,38 +77,4 @@ function draw() {
 
 	planets.forEach(drawPlanet);
 	planets.forEach(updatePlanet);
-
-/*
-	//earth
-	fill('DeepSkyBlue')
-	ellipse(135*cos(p3), 90*sin(p3), 17, 17);
-	p3+= 0.048 * speed;
-
-	//mars
-	fill('Brown')
-	ellipse(180*cos(p4), 120*sin(p4), 15, 15);
-	p4+= 0.042 * speed;
-
-	//jupiter
-	fill('Khaki')
-	ellipse(225*cos(p5), 150*sin(p5), 30, 30);
-	p5+= 0.018 * speed;
-	//jupiter's dot
-	fill('Brown')
-	ellipse(225*cos(p6), 150*sin(p6), 5, 5);
-	p6+= 0.018 * speed;
-
-	//saturn
-
-
-	//uranus
-	fill('PowderBlue')
-	ellipse(330*cos(p8), 220*sin(p8), 25, 25);
-	p8+= 0.023 * speed;
-
-	//neptune
-	fill('DarkSlateBlue')
-	ellipse(390*cos(p9), 260*sin(p9), 25, 25);
-	p9+= 0.032 * speed;
-	*/
 }
